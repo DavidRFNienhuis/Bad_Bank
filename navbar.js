@@ -26,7 +26,7 @@ function NavBar(){
           <li className="nav-item">
             <a className="nav-link" href="#/alldata/">AllData</a>
           </li> 
-          <a class="nav-link"></a>
+          <a className="nav-link" href="${user}"></a>
           
         </ul>
       </div>

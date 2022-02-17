@@ -28,26 +28,30 @@ function Deposit(){
     </>);
   } 
   
-  function DepositForm(props){
-    const [email, setEmail]   = React.useState('');
-    const [amount, setAmount] = React.useState('');
-  
-    function handle(){
-      fetch(`/account/update/${email}/${amount}`)
-      .then(response => response.text())
-      .then(text => {
-          try {
-              const data = JSON.parse(text);
-              props.setStatus(JSON.stringify(data.value));
-              props.setShow(false);
-              console.log('JSON:', data);
-          } catch(err) {
-              props.setStatus('Deposit failed')
-              console.log('err:', text);
-          }
-      });
-    }
-  
+    
+
+    function DepositForm(props){
+      const [email, setEmail]   = React.useState('');
+      const [amount, setAmount] = React.useState('');
+    
+      function handle(){
+        fetch(`/account/update/${email}/+${amount}`)
+        .then(response => response.text())
+        .then(text => {
+            try {
+                const data = JSON.parse(text);
+                props.setStatus(JSON.stringify());
+                props.setShow(false);
+                console.log('JSON:', data);
+            } catch(err) {
+                props.setStatus('Deposit failed')
+                console.log('err:', text);
+            }
+        });
+      }
+
+
+
     return(<>
   
       Email<br/>

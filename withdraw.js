@@ -21,7 +21,7 @@ function Withdraw(){
         className="btn btn-light" 
         onClick={() => {
           props.setShow(true);
-          props.setStatus('');
+          props.setStatus(JSON.stringify(data.value.balance));
         }}>
           Withdraw again
       </button>
@@ -38,11 +38,11 @@ function Withdraw(){
       .then(text => {
           try {
               const data = JSON.parse(text);
-              props.setStatus(JSON.stringify(data.value));
+              props.setStatus(JSON.stringify());
               props.setShow(false);
               console.log('JSON:', data);
           } catch(err) {
-              props.setStatus('Deposit failed')
+              props.setStatus('Withdraw')
               console.log('err:', text);
           }
       });

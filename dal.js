@@ -21,6 +21,18 @@ function create(name, email, password){
     })
 }
 
+// login to account
+function login(email,password){
+
+    return new Promise((resolve, reject)=>{
+        const customers = db.auth( {username} )
+
+            .collection('users')
+            .login({email: password})
+    })
+}
+
+
 // find user account
 function find(email){
     return new Promise((resolve, reject) => {    
@@ -34,11 +46,12 @@ function find(email){
 }
 
 // find user account
-function findOne(email){
+function findOne(email, balance){
     return new Promise((resolve, reject) => {    
         const customers = db
             .collection('users')
-            .findOne({email: email})
+            .findOne({email: email},
+                {$inc: {balance: amount}})
             .then((doc) => resolve(doc))
             .catch((err) => reject(err));    
     })
@@ -75,4 +88,4 @@ function all(){
 }
 
 
-module.exports = {create, findOne, find, update, all};
+module.exports = {create, login, findOne, find, update, all};
