@@ -1,5 +1,6 @@
 const MongoClient =require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
+const mongoose = require('mongoose');
+const url = 'mongodb+srv://DRFN:dave123@db.hjtnr.mongodb.net/DB?retryWrites=true&w=majority';
 
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client){
     console.log('Connected!')
